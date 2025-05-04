@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuizingSphere - Quiz Practice Platform</title>
+  <meta name="description" content="QuizingSphere is an interactive platform for quiz practice across various subjects, helping students enhance their knowledge and exam preparation.">
+  <meta name="keywords" content="quiz, quiz practice, online quizzes, NPTEL quiz, exam preparation">
+
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+   .search-glow {
+  background: linear-gradient(90deg, rgba(134, 37, 190, 0.65) 0%, rgba(109, 43, 179, 0.65) 100%) !important;
+  color: #fff !important;
+  border: 1.5px solid #a610f6 !important;
+  box-shadow: 0 2px 12px 0 rgba(122, 50, 127, 0.5);
+  transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.search-glow:focus {
+  box-shadow: 0 0 0 0px rgba(173, 102, 244, 0.4), 0 0 24px rgba(165, 55, 195, 0.7), 0 0 48px rgba(133,50,180,0.8);
+  border-color: #ba3ef3;
+  background: linear-gradient(90deg, rgba(117, 50, 183, 0.92) 0%, rgba(81, 44, 175, 0.92) 100%) !important;
+  color: #fff !important;
+}
+
+    #search-results {
+      background: linear-gradient(90deg, rgba(91,44,139,0.92) 0%, rgba(35,18,77,0.92) 100%) !important;
+      color: #e0aaff !important;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 4px 24px 0 #7DE2FC33;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    #search-results a {
+      color: #e0aaff !important;
+      border-bottom: 1px solid #7DE2FC33;
+      background: transparent;
+      transition: background 0.2s, color 0.2s;
+    }
+    #search-results a:hover {
+      background: rgba(91,44,139,0.7) !important;
+      color: #fff !important;
+      box-shadow: 0 2px 12px 0 #7DE2FC44;
+    }
+    #search-results div {
+      color: #e0aaff;
+    }
+      .search-glow::placeholder {
+        color: #d2bfe0;
+        opacity: 1;
+      }
+  </style>
+</head>
+<body>
+  <div id="tsparticles"></div>
+  <br>
+  <nav class="top-navbar">
+    <span class="navbar-logo glow-logo">QuizingSphere</span>
+    <div class="navbar-links">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <button class="menu-btn" aria-label="Open menu">
+    <img src="sidebar-icon.png" alt="Menu" class="menu-icon-img" width="50" height="50" style="display:block;" />
+  </button>
+
+  <div class="mobile-menu">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+  
+  
+  <main class="main-content">
+    <div style="position:relative;max-width:400px;width:90%;margin:0 auto 24px auto;">
+      <input type="text" id="card-search" class="search-glow" placeholder="Search quizzes..." style="color:white;width:100%;padding:12px 44px 12px 44px;font-size:1.1rem;border-radius:12px;outline:none;">
+      
+      <!-- Search Icon -->
+      <span style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#e0aaff;font-size:1.3rem;pointer-events:none;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e0aaff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </span>
+    
+      <!-- Cancel (Clear) Icon -->
+      <span id="clear-search" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);color:#e0aaff;font-size:1.5rem;cursor:pointer;display:none;">
+        &times;
+      </span>
+    
+      <div id="search-results" style="display:none;position:absolute;top:110%;left:0;width:100%;background:rgba(44,19,84,0.97);border-radius:0 0 12px 12px;box-shadow:0 4px 24px 0 #7DE2FC33;z-index:10;"></div>
+    </div>
+    
+    <h3 class="welcome-text">Explore Quizzes...</h3>
+    <div class="card-container">
+      <a href="https://quizsphere-nptel-forest.netlify.app/" class="card" target="_blank">
+        <div class="card-content">
+          <h2>Forest and Management Quiz</h2>
+          <p>Test your knowledge about forests and resource management!</p>
+          <div class="card-hover-effect"></div>
+        </div>
+      </a>
+      <a href="https://essence-of-traditional-knowledge.netlify.app/" class="card" target="_blank">
+        <div class="card-content">
+          <h2>Essence of Traditional Knowledge</h2>
+          <p>Dive into the wisdom of ancient traditions and practices!</p>
+          <div class="card-hover-effect"></div>
+        </div>
+      </a>
+      <a href="https://quizingsphere-air-pollution.netlify.app/" class="card" target="_blank">
+        <div class="card-content">
+          <h2>Air Pollution Quiz</h2>
+          <p>Practice NPTEL assignment questions on air pollution and environmental impact!</p>
+          <div class="card-hover-effect"></div>
+        </div>
+      </a>
+      <a href="https://fundamentals-of-object-oriented-prog.netlify.app/" class="card" target="_blank">
+        <div class="card-content">
+          <h2>Fundamentals of OOP</h2>
+          <p>Practice NPTEL assignment questions on Object-Oriented Programming!</p>
+          <div class="card-hover-effect"></div>
+        </div>
+      </a>
+      <a href="https://education-for-sustainability-dev.netlify.app/" class="card" target="_blank">
+        <div class="card-content">
+          <h2>Education for Sustainability</h2>
+          <p>Practice NPTEL assignment questions and learn sustainability concepts!</p>
+          <div class="card-hover-effect"></div>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 QuizingSphere. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <script>
+    // Initialize particles background
+    tsParticles.load("tsparticles", {
+      fullScreen: { enable: false },
+      background: { color: "transparent" },
+      particles: {
+        number: { value: 60, density: { enable: true, area: 800 } },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        move: { enable: true, speed: 1, direction: "none", outModes: "bounce" },
+        links: { enable: true, distance: 100, color: "#ffffff", opacity: 0.2, width: 1 }
+      },
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "repulse" },
+          onClick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 100 },
+          push: { quantity: 4 }
+        }
+      }
+    });
+
+    // Menu functionality
+    const menuBtn = document.querySelector('.menu-btn');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+        menuBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      }
+    });
+
+    const searchInput = document.getElementById('card-search');
+const searchResults = document.getElementById('search-results');
+const clearButton = document.getElementById('clear-search');
+const cards = Array.from(document.querySelectorAll('.card-container .card'));
+
+const quizzes = cards.map(card => ({
+  title: card.querySelector('h2').textContent,
+  desc: card.querySelector('p').textContent,
+  href: card.getAttribute('href'),
+}));
+
+let currentMatches = [];
+
+searchInput.addEventListener('input', function() {
+  const query = this.value.trim().toLowerCase();
+  searchResults.innerHTML = '';
+  
+  // Show or hide clear button
+  if (query.length > 0) {
+    clearButton.style.display = 'block';
+  } else {
+    clearButton.style.display = 'none';
+  }
+  
+  if (!query) {
+    searchResults.style.display = 'none';
+    currentMatches = [];
+    return;
+  }
+  
+  currentMatches = quizzes.filter(q =>
+    q.title.toLowerCase().includes(query) ||
+    q.desc.toLowerCase().includes(query)
+  );
+  
+  if (currentMatches.length === 0) {
+    searchResults.innerHTML = '<div style="padding:12px;color:#e0aaff;">No quizzes found.</div>';
+    searchResults.style.display = 'block';
+    return;
+  }
+  
+  currentMatches.forEach(q => {
+    const item = document.createElement('a');
+    item.href = q.href;
+    item.target = '_blank';
+    item.style.display = 'block';
+    item.style.padding = '14px 18px';
+    item.style.color = '#e0aaff';
+    item.style.textDecoration = 'none';
+    item.style.fontSize = '1.05rem';
+    item.style.borderBottom = '1px solid #7DE2FC22';
+    item.style.transition = 'background 0.2s, color 0.2s';
+    item.style.cursor = 'pointer';
+    item.innerHTML = `<strong>${q.title}</strong><br><span style='font-size:0.97em;opacity:0.8;'>${q.desc}</span>`;
+
+    item.addEventListener('mouseover', () => {
+      item.style.background = '';
+      item.style.color = '';
+    });
+
+    item.addEventListener('mouseout', () => {
+      item.style.background = 'transparent';
+      item.style.color = '#e0aaff';
+    });
+
+    searchResults.appendChild(item);
+  });
+  
+  searchResults.style.display = 'block';
+});
+
+// Handle Enter key
+searchInput.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    if (currentMatches.length === 1) {
+      window.open(currentMatches[0].href, '_blank');
+      searchResults.style.display = 'none';
+      searchInput.value = '';
+      clearButton.style.display = 'none';
+    }
+  }
+});
+
+// Handle click outside
+document.addEventListener('click', function(event) {
+  if (!searchInput.contains(event.target) && !searchResults.contains(event.target) && !clearButton.contains(event.target)) {
+    searchResults.style.display = 'none';
+    searchInput.value = '';
+    clearButton.style.display = 'none';
+  }
+});
+
+// Clear search on clicking clear button
+clearButton.addEventListener('click', function() {
+  searchInput.value = '';
+  searchResults.style.display = 'none';
+  clearButton.style.display = 'none';
+  searchInput.focus(); // bring focus back to input
+});
+
+  </script>
+  <span class="mobile-logo glow-logo">QuizingSphere</span>
+</body>
+</html>

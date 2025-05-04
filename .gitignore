@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+
+# Uploaded files
+uploads/
+
+# System files
+.DS_Store
+Thumbs.db 

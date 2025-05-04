@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact - QuizingSphere</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <style>
+    .instagram-link {
+      display: inline-block;
+      padding: 12px 24px;
+      background: rgba(255,255,255,0.1);
+      color: #e0aaff;
+      text-decoration: none;
+      border-radius: 25px;
+      margin: 20px 0 0 0;
+      margin-left: 12px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 16px 2px #e1306c44, 0 0 32px 4px #e0aaff22;
+      position: relative;
+    }
+    .instagram-link:hover, .instagram-link:focus {
+      background: rgba(225, 48, 108, 0.18);
+      color: #fff;
+      box-shadow: 0 0 32px 8px #e1306c, 0 0 48px 16px #e0aaff88;
+      text-shadow: 0 0 8px #e1306c, 0 0 16px #e0aaff;
+    }
+    .instagram-link svg {
+      filter: drop-shadow(0 0 6px #e1306c88);
+      transition: filter 0.3s;
+    }
+    .instagram-link:hover svg, .instagram-link:focus svg {
+      filter: drop-shadow(0 0 12px #e1306c) drop-shadow(0 0 24px #e0aaff);
+    }
+
+    /* Contact Form Styles */
+    .contact-form-container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(224, 170, 255, 0.1);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .form-group {
+      width: 100%;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid rgba(224, 170, 255, 0.3);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #e0aaff;
+      font-size: 16px;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .form-group textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .file-upload-area {
+      width: 100%;
+      height: 150px;
+      border: 2px dashed rgba(224, 170, 255, 0.3);
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #e0aaff;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .file-upload-area:hover {
+      border-color: #e0aaff;
+      background: rgba(224, 170, 255, 0.05);
+    }
+
+    .file-upload-area.hover {
+      background: rgba(224, 170, 255, 0.1);
+      border-color: #e0aaff;
+    }
+
+    .file-name-display {
+      margin-top: 10px;
+      color: #e0aaff;
+      font-size: 14px;
+    }
+
+    .submit-btn {
+      padding: 12px 24px;
+      background: rgba(224, 170, 255, 0.1);
+      color: #e0aaff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background: rgba(224, 170, 255, 0.2);
+      box-shadow: 0 0 20px rgba(224, 170, 255, 0.3);
+    }
+
+    .response-message {
+      margin-top: 15px;
+      text-align: center;
+      color: #e0aaff;
+    }
+  </style>
+</head>
+<body>
+  <div id="tsparticles"></div>
+
+  <button class="menu-btn" aria-label="Open menu">
+    <img src="sidebar-icon.png" alt="Menu" class="menu-icon-img" width="50" height="50" style="display:block;" />
+  </button>
+  <div class="mobile-menu">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link active">Contact</a>
+  </div>
+  <nav class="top-navbar">
+    <span class="navbar-logo glow-logo">QuizingSphere</span>
+    <div class="navbar-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link active">Contact</a>
+    </div>
+  </nav>
+  <span class="mobile-logo glow-logo">QuizingSphere</span>
+  <header class="header">
+    <div class="logo">QuizingSphere</div>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link active">Contact</a>
+    </nav>
+  </header>
+  <main class="main-content">
+    <div class="quiz-container">
+      <h4 class="welcome-text">Contact & Contribute</h4>
+      <p class="contribution-text">Help us grow QuizingSphere by contributing your questions!</p>
+      
+      <div class="contact-section">
+        <h2>Join Our Community</h2>
+        <p>Connect with other quiz enthusiasts and stay updated with our latest content:</p>
+        <a href="https://chat.whatsapp.com/Eij2TwGEVND01lRwfSaixo" class="whatsapp-link" target="_blank">
+          <svg style="vertical-align:middle;margin-right:8px;" width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="rgba(134, 37, 190, 0.18)"/><path d="M23.472 19.339c-.355-.177-2.104-1.037-2.43-1.155-.326-.118-.563-.177-.8.177-.237.355-.91 1.155-1.117 1.393-.207.237-.414.266-.77.089-.355-.178-1.5-.553-2.86-1.763-1.057-.944-1.77-2.108-1.98-2.463-.207-.355-.022-.546.155-.723.159-.158.355-.414.533-.622.178-.207.237-.355.355-.592.118-.237.06-.444-.03-.622-.089-.178-.8-1.924-1.096-2.637-.289-.693-.583-.599-.8-.61-.207-.009-.444-.011-.681-.011-.237 0-.622.089-.95.444-.326.355-1.25 1.222-1.25 2.977 0 1.755 1.28 3.449 1.457 3.687.178.237 2.522 3.857 6.102 5.254.854.294 1.52.47 2.04.601.857.217 1.638.187 2.255.114.688-.08 2.104-.859 2.402-1.689.296-.83.296-1.541.207-1.689-.089-.148-.326-.237-.681-.414z" fill="#e0aaff"/></svg>
+          Join Our WhatsApp Group
+        </a>
+        <a href="https://www.instagram.com/quizsphere_nptel?igsh=ZXo0OGI1Y2xnaDBp" class="whatsapp-link" target="_blank">
+          <svg style="vertical-align:middle;margin-right:8px;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e0aaff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>Follow us on Instagram</a>
+      </div>
+
+      <div class="submit-section">
+        <h2>Submit Your Questions</h2>
+        <div class="contact-form-container">
+          <form id="contactForm" class="contact-form" enctype="multipart/form-data">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <textarea name="message" placeholder="Your Message" required></textarea>
+            </div>
+            <div class="form-group">
+              <div id="drag-drop-area" class="file-upload-area">
+                <p>Drag and drop your file here or click to select</p>
+                <input type="file" name="attachment" id="fileInput" style="display: none;">
+              </div>
+              <div id="file-name-display" class="file-name-display"></div>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+          <p id="response" class="response-message"></p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <p>&copy; 2025 QuizingSphere. All rights reserved.</p>
+  </footer>
+  <script>
+    // Menu functionality
+    const menuBtn = document.querySelector('.menu-btn');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+    // Close menu when clicking a link
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      });
+    });
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+        menuBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      }
+    });
+
+    // File Upload Functionality
+    const dragDropArea = document.getElementById('drag-drop-area');
+    const fileInput = document.getElementById('fileInput');
+    const contactForm = document.getElementById('contactForm');
+    const fileNameDisplay = document.getElementById('file-name-display');
+    const responseText = document.getElementById('response');
+
+    dragDropArea.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    dragDropArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dragDropArea.classList.add('hover');
+    });
+
+    dragDropArea.addEventListener('dragleave', () => {
+      dragDropArea.classList.remove('hover');
+    });
+
+    dragDropArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dragDropArea.classList.remove('hover');
+      const file = e.dataTransfer.files[0];
+      fileInput.files = e.dataTransfer.files;
+      fileNameDisplay.textContent = `Selected File: ${file.name}`;
+    });
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      fileNameDisplay.textContent = `Selected File: ${file.name}`;
+    });
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(contactForm);
+
+      try {
+        const res = await fetch('https://quizingsphere-backend.onrender.com/send', {
+          method: 'POST',
+          body: formData
+        });
+
+        const text = await res.text();
+        responseText.innerText = text;
+        if (text === 'Email sent successfully') {
+          contactForm.reset();
+          fileNameDisplay.textContent = '';
+        }
+      } catch (error) {
+        responseText.innerText = 'Error sending message!';
+      }
+    });
+
+    // Initialize particles background
+    tsParticles.load("tsparticles", {
+      fullScreen: { enable: false },
+      background: { color: "transparent" },
+      particles: {
+        number: { value: 60, density: { enable: true, area: 800 } },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        move: { enable: true, speed: 1, direction: "none", outModes: "bounce" },
+        links: { enable: true, distance: 100, color: "#ffffff", opacity: 0.2, width: 1 }
+      },
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "repulse" },
+          onClick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 100 },
+          push: { quantity: 4 }
+        }
+      }
+    });
+  </script>
+</body>
+</html> 
