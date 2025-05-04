@@ -3,76 +3,111 @@ const nodemailer = require('nodemailer');
 const multer = require('multer');
 const cors = require('cors');
 const path = require('path');
-const fs = require('fs');
 require('dotenv').config();
 
 // Initialize the app
 const app = express();
-app.use(cors());
+
+// Configure CORS
+const corsOptions = {
+  origin: '*', // Allow all origins in development
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: false
+};
+
+// Enable CORS for all routes
+app.use(cors(corsOptions));
+
+// Handle preflight requests
+app.options('*', cors(corsOptions));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Define storage location for multer
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/'); // Store uploaded files in 'uploads' directory
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname); // Use original file name
-  }
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).json({
+    error: 'Internal Server Error',
+    message: err.message
+  });
 });
 
-const upload = multer({ storage });
+// Configure multer to use memory storage
+const storage = multer.memoryStorage();
+const upload = multer({ 
+  storage,
+  limits: {
+    fileSize: 10 * 1024 * 1024 // 10MB limit
+  }
+});
 
 // Serve static files
 app.use(express.static('.'));
 
-// Handle form submission
-app.post('/send', upload.single('attachment'), (req, res) => {
-  const { name, email, message } = req.body;
-  const attachmentPath = req.file ? req.file.path : null;
-
-  // Create a transporter for sending emails
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER || 'mdkaif196905@gmail.com',
-      pass: process.env.EMAIL_PASS || 'rqbk yjfc vstp pbyr'
-    }
-  });
-
-  // Email options with the attachment and its original filename
-  const mailOptions = {
-    from: email,
-    to: process.env.EMAIL_USER || 'mdkaif196905@gmail.com',
-    subject: 'New Question Submission from QuizingSphere',
-    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-    attachments: attachmentPath ? [{
-      path: attachmentPath,
-      filename: req.file.originalname // Use original file name
-    }] : []
-  };
-
-  // Send the email with attachment
-  transporter.sendMail(mailOptions, (err, info) => {
-    if (err) {
-      return res.status(500).send('Error sending email');
-    }
-    // Clean up the uploaded file after sending email
-    if (attachmentPath) {
-      fs.unlinkSync(attachmentPath);
-    }
-    res.send('Email sent successfully');
-  });
-});
-
 // Health check endpoint
 app.get('/health', (req, res) => {
-  res.status(200).send('OK');
+  res.status(200).json({ status: 'OK' });
+});
+
+// Handle form submission
+app.post('/send', upload.single('attachment'), async (req, res) => {
+  try {
+    console.log('Request received:', req.body);
+    
+    const { name, email, message } = req.body;
+    const file = req.file;
+
+    // Validate required fields
+    if (!name || !email || !message) {
+      return res.status(400).json({
+        error: 'Missing required fields',
+        message: 'Name, email, and message are required'
+      });
+    }
+
+    // Create a transporter for sending emails
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER || 'mdkaif196905@gmail.com',
+        pass: process.env.EMAIL_PASS || 'rqbk yjfc vstp pbyr'
+      }
+    });
+
+    // Email options
+    const mailOptions = {
+      from: email,
+      to: process.env.EMAIL_USER || 'mdkaif196905@gmail.com',
+      subject: 'New Question Submission from QuizingSphere',
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+      attachments: file ? [{
+        filename: file.originalname,
+        content: file.buffer
+      }] : []
+    };
+
+    // Send the email
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent:', info.response);
+
+    res.status(200).json({
+      success: true,
+      message: 'Email sent successfully'
+    });
+  } catch (error) {
+    console.error('Error processing form submission:', error);
+    res.status(500).json({
+      error: 'Failed to send email',
+      message: error.message
+    });
+  }
 });
 
 // Start server
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`QuizingSphere server started on port ${PORT}`);
+  console.log('Environment:', process.env.NODE_ENV || 'development');
 }); 

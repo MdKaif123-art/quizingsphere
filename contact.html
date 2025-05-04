@@ -266,17 +266,26 @@
       try {
         const res = await fetch('https://quizingsphere-backend.onrender.com/send', {
           method: 'POST',
-          body: formData
+          body: formData,
+          mode: 'cors',
+          headers: {
+            'Accept': 'application/json'
+          }
         });
 
-        const text = await res.text();
-        responseText.innerText = text;
-        if (text === 'Email sent successfully') {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        const data = await res.json();
+        responseText.innerText = data.message;
+        if (data.success) {
           contactForm.reset();
           fileNameDisplay.textContent = '';
         }
       } catch (error) {
-        responseText.innerText = 'Error sending message!';
+        console.error('Error:', error);
+        responseText.innerText = 'Error sending message! Please try again.';
       }
     });
 
