@@ -36,11 +36,9 @@ app.use((err, req, res, next) => {
 
 // Configure multer to use memory storage
 const storage = multer.memoryStorage();
-const upload = multer({ 
+const upload = multer({
   storage,
-  limits: {
-    fileSize: 10 * 1024 * 1024 // 10MB limit
-  }
+  limits: { fileSize: 10 * 1024 * 1024 } // 10MB per file
 });
 
 // Serve static files
@@ -71,21 +69,23 @@ app.post('/send', upload.array('attachments'), async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER || 'mdkaif196905@gmail.com',
-        pass: process.env.EMAIL_PASS || 'rqbk yjfc vstp pbyr'
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
       }
     });
+
+    const attachments = (files || []).map(file => ({
+      filename: file.originalname,
+      content: file.buffer
+    }));
 
     // Email options
     const mailOptions = {
       from: email,
-      to: process.env.EMAIL_USER || 'mdkaif196905@gmail.com',
+      to: process.env.EMAIL_USER,
       subject: 'New Question Submission from QuizingSphere',
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-      attachments: files && files.length > 0 ? files.map(file => ({
-        filename: file.originalname,
-        content: file.buffer
-      })) : []
+      attachments
     };
 
     // Send the email
