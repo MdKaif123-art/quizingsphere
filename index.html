@@ -57,7 +57,7 @@
   <div id="tsparticles"></div>
   <br>
   <nav class="top-navbar">
-    <span class="navbar-logo glow-logo">QuizingSphere</span>
+    <a href="index.html" class="navbar-logo glow-logo" style="text-decoration:none;">QuizingSphere</a>
     <div class="navbar-links">
       <a href="index.html" class="nav-link active">Home</a>
       <a href="about.html" class="nav-link">About</a>
@@ -133,6 +133,13 @@
           <div class="card-hover-effect"></div>
         </div>
       </a>
+      <a href="http://quizingsphere-principlesofmanangement.netlify.app/" class="card" target="_blank">
+        <div class="card-content">
+          <h2>Principles of Management Quiz</h2>
+          <p>Practice NPTEL assignment questions for Principles of Management!</p>
+          <div class="card-hover-effect"></div>
+        </div>
+      </a>
     </div>
   </main>
 
@@ -141,29 +148,28 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <script>
-    // Initialize particles background
+    const isMobile = window.innerWidth <= 768;
     tsParticles.load("tsparticles", {
       fullScreen: { enable: false },
       background: { color: "transparent" },
       particles: {
-        number: { value: 60, density: { enable: true, area: 800 } },
+        number: { value: isMobile ? 20 : 60, density: { enable: true, area: 800 } },
         color: { value: "#ffffff" },
         shape: { type: "circle" },
-        opacity: { value: 0.5, random: true },
-        size: { value: 3, random: true },
-        move: { enable: true, speed: 1, direction: "none", outModes: "bounce" },
-        links: { enable: true, distance: 100, color: "#ffffff", opacity: 0.2, width: 1 }
+        opacity: { value: isMobile ? 0.2 : 0.5, random: true },
+        size: { value: isMobile ? 2 : 3, random: true },
+        move: { enable: true, speed: isMobile ? 0.4 : 1, direction: "none", outModes: "bounce" },
+        links: { enable: true, distance: 100, color: "#ffffff", opacity: isMobile ? 0.08 : 0.2, width: 1 }
       },
       interactivity: {
         events: {
-          onHover: { enable: true, mode: "repulse" },
-          onClick: { enable: true, mode: "push" }
+          onHover: { enable: !isMobile, mode: "repulse" },
+          onClick: { enable: !isMobile, mode: "push" }
         },
         modes: {
-          repulse: { distance: 100 },
-          push: { quantity: 4 }
+          repulse: { distance: isMobile ? 50 : 100 },
+          push: { quantity: isMobile ? 2 : 4 }
         }
       }
     });
@@ -186,7 +192,11 @@
     });
 
     document.addEventListener('click', (e) => {
-      if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+      if (
+        mobileMenu.classList.contains('active') &&
+        !menuBtn.contains(e.target) &&
+        !mobileMenu.contains(e.target)
+      ) {
         menuBtn.classList.remove('active');
         mobileMenu.classList.remove('active');
       }
@@ -293,6 +303,6 @@ clearButton.addEventListener('click', function() {
 });
 
   </script>
-  <span class="mobile-logo glow-logo">QuizingSphere</span>
+  <a href="index.html" class="mobile-logo glow-logo" style="text-decoration:none;">QuizingSphere</a>
 </body>
 </html>

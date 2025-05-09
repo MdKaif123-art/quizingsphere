@@ -52,12 +52,12 @@ app.get('/health', (req, res) => {
 });
 
 // Handle form submission
-app.post('/send', upload.single('attachment'), async (req, res) => {
+app.post('/send', upload.array('attachments'), async (req, res) => {
   try {
     console.log('Request received:', req.body);
     
     const { name, email, message } = req.body;
-    const file = req.file;
+    const files = req.files; // Array of files
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -82,10 +82,10 @@ app.post('/send', upload.single('attachment'), async (req, res) => {
       to: process.env.EMAIL_USER || 'mdkaif196905@gmail.com',
       subject: 'New Question Submission from QuizingSphere',
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-      attachments: file ? [{
+      attachments: files && files.length > 0 ? files.map(file => ({
         filename: file.originalname,
         content: file.buffer
-      }] : []
+      })) : []
     };
 
     // Send the email

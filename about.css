@@ -266,6 +266,37 @@
                  0 0 70px rgba(224, 170, 255, 0.3);
   }
 }
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 2rem;
+  }
+  
+  .about-card {
+    padding: 20px;
+  }
+  
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .social-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-link {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .about-title {
