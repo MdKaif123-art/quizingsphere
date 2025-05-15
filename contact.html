@@ -2,11 +2,189 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - QuizingSphere</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <style>
+    /* Contact Page Custom Styles */
+    .contact-section {
+      padding: clamp(1rem, 5vw, 3rem);
+    }
+
+    .contact-header {
+      margin-bottom: clamp(2rem, 5vw, 3rem);
+    }
+
+    .contact-container {
+      display: grid;
+      gap: clamp(1.5rem, 4vw, 2.5rem);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: clamp(1rem, 3vw, 1.5rem);
+    }
+
+    .info-card {
+      background: var(--background-color);
+      border: 1px solid var(--border-color);
+      border-radius: 0.5rem;
+      padding: clamp(1rem, 3vw, 1.5rem);
+      text-align: center;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-card i {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    }
+
+    .info-card h3 {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .info-card p {
+      font-size: clamp(0.875rem, 2vw, 1rem);
+      line-height: 1.5;
+    }
+
+    .contact-form-wrapper {
+      max-width: min(100%, 600px);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .contact-form {
+      background: var(--background-color);
+      border: 1px solid var(--border-color);
+      border-radius: 0.5rem;
+      padding: clamp(1.25rem, 4vw, 2rem);
+      display: grid;
+      gap: clamp(1rem, 3vw, 1.5rem);
+    }
+
+    .form-group {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: clamp(0.875rem, 2vw, 1rem);
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: clamp(0.5rem, 2vw, 0.75rem);
+      border: 1px solid var(--border-color);
+      border-radius: 0.375rem;
+      font-size: clamp(0.875rem, 2vw, 1rem);
+      transition: all 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .submit-button {
+      justify-self: start;
+      padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+      font-size: clamp(0.875rem, 2vw, 1rem);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    }
+
+    .social-connect {
+      text-align: center;
+      margin-top: clamp(2rem, 5vw, 3rem);
+      padding: clamp(1rem, 3vw, 2rem);
+    }
+
+    .social-connect h3 {
+      font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+      margin-bottom: clamp(1rem, 3vw, 1.5rem);
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: clamp(0.75rem, 2vw, 1rem);
+    }
+
+    .social-icon {
+      width: clamp(40px, 10vw, 50px);
+      height: clamp(40px, 10vw, 50px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+    }
+
+    .social-icon:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+    }
+
+    @media (max-width: 640px) {
+      .contact-container {
+        gap: 2rem;
+      }
+
+      .contact-form {
+        padding: 1.25rem;
+      }
+
+      .submit-button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .info-card {
+        padding: 1.25rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .contact-info {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
     .instagram-link {
       display: inline-block;
       padding: 12px 24px;
@@ -44,44 +222,6 @@
       box-shadow: 0 0 20px rgba(224, 170, 255, 0.1);
       box-sizing: border-box;
       width: 100%;
-    }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .form-group {
-      width: 100%;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid rgba(224, 170, 255, 0.3);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      color: #e0aaff;
-      font-size: 16px;
-      box-sizing: border-box;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: rgba(255, 255, 255, 0.7);
-      white-space: normal;
-      word-wrap: break-word;
-    }
-
-    .form-group textarea {
-      height: 120px;
-      resize: vertical;
-      min-height: 120px;
-      max-height: 300px;
     }
 
     .file-upload-area {
@@ -220,113 +360,143 @@
 <body>
   <div id="tsparticles"></div>
 
-  <button class="menu-btn" aria-label="Open menu">
-    <img src="sidebar-icon.png" alt="Menu" class="menu-icon-img" width="50" height="50" style="display:block;" />
-  </button>
-  <div class="mobile-menu">
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">QuizingSphere</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav">
     <a href="index.html" class="nav-link">Home</a>
     <a href="about.html" class="nav-link">About</a>
     <a href="contact.html" class="nav-link active">Contact</a>
   </div>
-  <nav class="top-navbar">
-    <a href="index.html" class="navbar-logo glow-logo" style="text-decoration:none;">QuizingSphere</a>
-    <div class="navbar-links">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="contact.html" class="nav-link active">Contact</a>
-    </div>
-  </nav>
-  <a href="index.html" class="mobile-logo glow-logo" style="text-decoration:none;">QuizingSphere</a>
-  <header class="header">
-    <a href="index.html" class="logo" style="text-decoration:none;">QuizingSphere</a>
-    <nav class="nav">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="contact.html" class="nav-link active">Contact</a>
-    </nav>
-  </header>
+
   <main class="main-content">
-    <div class="quiz-container">
-      <h4 class="welcome-text">Contact & Contribute</h4>
-      <p class="contribution-text">Help us grow QuizingSphere by contributing your questions!</p>
-      
-      <div class="contact-section">
-        <h2>Join Our Community</h2>
-        <p>Connect with other quiz enthusiasts and stay updated with our latest content:</p>
-        <a href="https://chat.whatsapp.com/Eij2TwGEVND01lRwfSaixo" class="whatsapp-link" target="_blank">
-          <svg style="vertical-align:middle;margin-right:8px;" width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="rgba(134, 37, 190, 0.18)"/><path d="M23.472 19.339c-.355-.177-2.104-1.037-2.43-1.155-.326-.118-.563-.177-.8.177-.237.355-.91 1.155-1.117 1.393-.207.237-.414.266-.77.089-.355-.178-1.5-.553-2.86-1.763-1.057-.944-1.77-2.108-1.98-2.463-.207-.355-.022-.546.155-.723.159-.158.355-.414.533-.622.178-.237.237-.355.355-.592.118-.237.06-.444-.03-.622-.089-.178-.8-1.924-1.096-2.637-.289-.693-.583-.599-.8-.61-.207-.009-.444-.011-.681-.011-.237 0-.622.089-.95.444-.326.355-1.25 1.222-1.25 2.977 0 1.755 1.28 3.449 1.457 3.687.178.237 2.522 3.857 6.102 5.254.854.294 1.52.47 2.04.601.857.217 1.638.187 2.255.114.688-.08 2.104-.859 2.402-1.689.296-.83.296-1.541.207-1.689-.089-.148-.326-.237-.681-.414z" fill="#e0aaff"/></svg>
-          Join Our WhatsApp Group
-        </a>
-        <a href="https://www.instagram.com/quizsphere_nptel?igsh=ZXo0OGI1Y2xnaDBp" class="whatsapp-link" target="_blank">
-          <svg style="vertical-align:middle;margin-right:8px;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e0aaff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>Follow us on Instagram</a>
+    <section class="contact-section">
+      <div class="contact-header">
+        <h1 class="welcome-text">Get in Touch</h1>
+        <p class="welcome-description">Have questions or suggestions? We'd love to hear from you.</p>
       </div>
 
-      <div class="submit-section">
-        <h2>Submit Your Questions</h2>
-        <div class="contact-form-container">
-          <form id="contactForm" class="contact-form" enctype="multipart/form-data">
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="info-card">
+            <i class="fas fa-envelope"></i>
+            <h3>Email Us</h3>
+            <p>quizingsphere@gmail.com</p>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Location</h3>
+            <p>VIT University, Vellore, Tamil Nadu, India</p>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-clock"></i>
+            <h3>Response Time</h3>
+            <p>Within 24-48 hours</p>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <form class="contact-form" id="contact-form">
             <div class="form-group">
-              <input type="text" name="name" placeholder="Your Name" required>
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name">
             </div>
+            
             <div class="form-group">
-              <input type="email" name="email" placeholder="Your Email " required>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="Your email address">
             </div>
+            
             <div class="form-group">
-              <textarea name="message" placeholder="Course Name" required></textarea>
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required placeholder="What is this about?">
             </div>
+            
             <div class="form-group">
-              <div id="drag-drop-area" class="file-upload-area">
-                <p>Drag and drop your file here or click to select</p>
-                <input type="file" name="attachments" id="fileInput" multiple>
-              </div>
-              <div id="file-name-display" class="file-name-display"></div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="Your message" rows="5"></textarea>
             </div>
-            <div class="form-group" style="display: flex; justify-content: center;">
-              <button type="submit" class="submit-btn" id="submitBtn">Upload Questions</button>
-            </div>
-            <div id="progress-container" class="progress-container">
-              <div id="progress-bar" class="progress-bar"></div>
-              <div id="progress-text" class="progress-text">Uploading: 0%</div>
-            </div>
+            
+            <button type="submit" class="submit-button">
+              Send Message
+              <i class="fas fa-paper-plane"></i>
+            </button>
           </form>
-          <p id="response" class="response-message"></p>
+        </div>
+
+        <div class="social-connect">
+          <h3>Connect With Us</h3>
+          <div class="social-icons">
+            <a href="https://github.com/MdKaif123-art/" target="_blank" class="social-icon">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://mohammedkaifk-portfolio.netlify.app/" target="_blank" class="social-icon">
+              <i class="fas fa-globe"></i>
+            </a>
+            <a href="https://www.google.com/search?q=mohammad+kaif+k+Vit" target="_blank" class="social-icon">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
+
   <footer class="footer">
-    <p>&copy; 2025 QuizingSphere. All rights reserved.</p>
+    <div class="footer-content">
+      <p>&copy; 2025 QuizingSphere. All rights reserved.</p>
+      <div class="footer-links">
+      </div>
+    </div>
   </footer>
+
   <script>
-    // Menu functionality
-    const menuBtn = document.querySelector('.menu-btn');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-    menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
+    // Mobile menu functionality
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      mobileNav.classList.toggle('active');
     });
-    // Close menu when clicking a link
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        menuBtn.classList.remove('active');
-        mobileMenu.classList.remove('active');
-      });
-    });
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-        menuBtn.classList.remove('active');
-        mobileMenu.classList.remove('active');
+
+    // Close mobile menu on window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        mobileNav.classList.remove('active');
+        menuToggle.classList.remove('active');
       }
+    });
+
+    // Form submission handling
+    const contactForm = document.getElementById('contact-form');
+    
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Here you would typically handle the form submission
+      // For now, we'll just show an alert
+      alert('Thank you for your message! We will get back to you soon.');
+      contactForm.reset();
     });
 
     // File Upload Functionality
     const dragDropArea = document.getElementById('drag-drop-area');
     const fileInput = document.getElementById('fileInput');
-    const contactForm = document.getElementById('contactForm');
     const fileNameDisplay = document.getElementById('file-name-display');
-    const responseText = document.getElementById('response');
 
     dragDropArea.addEventListener('click', () => {
       fileInput.click();
@@ -392,83 +562,6 @@
     };
 
     tsParticles.load("tsparticles", particleConfig);
-
-    // Optimize form submission
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const submitBtn = document.getElementById('submitBtn');
-      
-      // Prevent multiple submissions
-      if (submitBtn.disabled) {
-        return;
-      }
-      
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Uploading... 0%';
-
-      try {
-        // Ensure all fields are present in FormData
-        const formData = new FormData();
-        formData.append('name', contactForm.elements['name'].value || '');
-        formData.append('email', contactForm.elements['email'].value || '');
-        formData.append('message', contactForm.elements['message'].value || '');
-        const files = contactForm.elements['attachments'].files;
-        for (let i = 0; i < files.length; i++) {
-          formData.append('attachments', files[i]);
-        }
-
-        const xhr = new XMLHttpRequest();
-        
-        xhr.upload.addEventListener('progress', (e) => {
-          if (e.lengthComputable) {
-            const percentComplete = Math.round((e.loaded / e.total) * 100);
-            submitBtn.textContent = `Uploading... ${percentComplete}%`;
-          }
-        });
-
-        xhr.onload = function() {
-          if (xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            if (response.success) {
-              contactForm.reset();
-              fileNameDisplay.textContent = '';
-            }
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Upload Questions';
-            // Show success message immediately, hide after 5 seconds
-            responseText.innerText = 'Questions uploaded successfully! Thank you for your contribution.';
-            setTimeout(() => {
-              responseText.innerText = '';
-            }, 5000);
-          } else {
-            let errorMsg = 'Error uploading questions! Please try again.';
-            try {
-              const errorResponse = JSON.parse(xhr.responseText);
-              if (errorResponse.message) errorMsg = errorResponse.message;
-            } catch (e) {}
-            responseText.innerText = errorMsg;
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Upload Questions';
-          }
-        };
-
-        xhr.onerror = function() {
-          responseText.innerText = 'Error uploading questions! Please try again.';
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Upload Questions';
-        };
-
-        xhr.open('POST', 'https://quizingsphere-backend.onrender.com/send', true);
-        xhr.setRequestHeader('Accept', 'application/json');
-        xhr.send(formData);
-
-      } catch (error) {
-        console.error('Error:', error);
-        responseText.innerText = 'Error uploading questions! Please try again.';
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Upload Questions';
-      }
-    });
   </script>
 </body>
 </html> 

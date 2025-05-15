@@ -2,138 +2,126 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About Me - QuizingSphere</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - QuizingSphere</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="about.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
 </head>
 <body>
-  <div id="tsparticles"></div>
-
-  <nav class="top-navbar">
-    <a href="index.html" class="navbar-logo glow-logo" style="text-decoration:none;">QuizingSphere</a>
-    <div class="navbar-links">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link active">About</a>
-      <a href="contact.html" class="nav-link">Contact</a>
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">QuizingSphere</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
-  <a href="index.html" class="mobile-logo glow-logo" style="text-decoration:none;">QuizingSphere</a>
 
-  <button class="menu-btn" aria-label="Open menu">
-    <img src="sidebar-icon.png" alt="Menu" class="menu-icon-img" width="50" height="50" style="display:block;" />
-  </button>
-
-  <div class="mobile-menu">
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
     <a href="index.html" class="nav-link">Home</a>
     <a href="about.html" class="nav-link active">About</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
 
-  <header class="header">
-    <a href="index.html" class="logo" style="text-decoration:none;">QuizingSphere</a>
-    <nav class="nav">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link active">About</a>
-    </nav>
-  </header>
+  <!-- Main Content -->
+  <main class="main-content">
+    <section class="about-section">
+      <div class="about-header">
+        <h1 class="welcome-text">About QuizingSphere</h1>
+        <p class="welcome-description">A personal initiative to revolutionize online learning through interactive quizzes</p>
+      </div>
 
-  <main class="main-content about-content">
-    <div class="about-container">
-      <h3 class="about-title"id="welcome-text" >About QuizingSphere</h3>
-      <div class="about-card">
+      <div class="about-content">
         <div class="profile-section">
-          <div class="profile-image">
-            <img src="creater.jpg" alt="Profile Image">
-          </div>
-          <div class="social-links">
-            <a href="https://www.google.com/search?sca_esv=076e05d021dd9d5f&sxsrf=AHTn8zr6OU2jc-VhtJALggHJuinxHXZY-Q:1746003771205&q=mohammad+kaif+k+Vit&spell=1&sa=X&ved=2ahUKEwj9m7z0sv-MAxUGhagCHaKvASEQBSgAegQIDRAB&biw=746&bih=705&dpr=1.29" target="_blank" class="social-link">
-              <i class="fab fa-linkedin"></i>
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://github.com/MdKaif123-art/" target="_blank" class="social-link">
-              <i class="fab fa-github"></i>
-              <span>GitHub</span>
-            </a>
+          <div class="profile-card">
+            <div class="profile-image-container">
+              <img src="creater.jpg" alt="Mohammed Kaif K" class="profile-img">
+            </div>
+            <h2 class="profile-name">Mohammed Kaif K</h2>
+            <p class="profile-title">Creator & Developer</p>
+            <div class="social-links">
+              <a href="https://www.google.com/search?q=mohammad+kaif+k+Vit" target="_blank" class="social-link">
+                <i class="fab fa-linkedin"></i>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://github.com/MdKaif123-art/" target="_blank" class="social-link">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+              </a>
+              <a href="https://mohammedkaifk-portfolio.netlify.app/" target="_blank" class="social-link">
+                <i class="fas fa-globe"></i>
+                <span>Portfolio</span>
+              </a>
+            </div>
           </div>
         </div>
-        <h2>Welcome to QuizingSphere</h2>
-        <p>QuizingSphere is your gateway to interactive learning through engaging quizzes. Our platform combines education with entertainment, making learning a fun and rewarding experience.</p>
-        <p>We specialize in creating high-quality quizzes that cover various topics, from traditional knowledge to modern subjects. Our mission is to make learning accessible and enjoyable for everyone.</p>
-        
-        <div class="features">
-          <div class="feature">
-            <h3>Interactive Learning</h3>
-            <p>Engage with dynamic quizzes that adapt to your learning pace</p>
+
+        <div class="vision-section">
+        <div class="about-info">
+          <h2>My Vision</h2>
+          <p>QuizingSphere was born from my passion for education and technology. As a student at VIT University, I recognized the need for an engaging platform that makes learning more interactive and effective. This platform represents my commitment to helping fellow students master various subjects through carefully crafted quizzes.</p>
+          
+          <div class="features-grid">
+            <div class="feature-card">
+              <i class="fas fa-brain"></i>
+              <h3>Interactive Learning</h3>
+              <p>Each quiz is designed to promote active learning and deep understanding of concepts</p>
+            </div>
+            <div class="feature-card">
+              <i class="fas fa-book"></i>
+              <h3>NPTEL Aligned</h3>
+              <p>Questions are carefully curated to match NPTEL course content and standards</p>
+            </div>
+            <div class="feature-card">
+              <i class="fas fa-user-friends"></i>
+              <h3>Student-Focused</h3>
+              <p>Created by a student for students, understanding your learning needs</p>
+            </div>
           </div>
-          <div class="feature">
-            <h3>Diverse Topics</h3>
-            <p>Explore a wide range of subjects and expand your knowledge</p>
-          </div>
-          <div class="feature">
-            <h3>User-Friendly</h3>
-            <p>Enjoy a seamless experience with our intuitive interface</p>
+
+          <div class="journey-section">
+            <h2>Development Journey</h2>
+            <p>This platform is continuously evolving, with regular updates and new features being added to enhance your learning experience. Your feedback and suggestions are valuable in shaping the future of QuizingSphere.</p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
-    <p>&copy; 2025 QuizingSphere. All rights reserved.</p>
+    <div class="footer-content">
+      <p>&copy; 2025 QuizingSphere. All rights reserved.</p>
+      <div class="footer-links">
+      </div>
+    </div>
   </footer>
 
   <script>
-    // Menu functionality
-    const menuBtn = document.querySelector('.menu-btn');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
+    // Mobile menu functionality
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
 
-    menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      mobileNav.classList.toggle('active');
     });
 
-    // Close menu when clicking a link
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        menuBtn.classList.remove('active');
-        mobileMenu.classList.remove('active');
-      });
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-        menuBtn.classList.remove('active');
-        mobileMenu.classList.remove('active');
-      }
-    });
-
-    // Initialize particles background
-    tsParticles.load("tsparticles", {
-      fullScreen: { enable: false },
-      background: { color: "transparent" },
-      particles: {
-        number: { value: 60, density: { enable: true, area: 800 } },
-        color: { value: "#ffffff" },
-        shape: { type: "circle" },
-        opacity: { value: 0.5, random: true },
-        size: { value: 3, random: true },
-        move: { enable: true, speed: 1, direction: "none", outModes: "bounce" },
-        links: { enable: true, distance: 100, color: "#ffffff", opacity: 0.2, width: 1 }
-      },
-      interactivity: {
-        events: {
-          onHover: { enable: true, mode: "repulse" },
-          onClick: { enable: true, mode: "push" }
-        },
-        modes: {
-          repulse: { distance: 100 },
-          push: { quantity: 4 }
-        }
+    // Close mobile menu on window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        mobileNav.classList.remove('active');
+        menuToggle.classList.remove('active');
       }
     });
   </script>
