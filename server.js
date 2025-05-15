@@ -56,14 +56,14 @@ app.post('/send', upload.single('attachment'), async (req, res) => {
   try {
     console.log('Request received:', req.body);
     
-    const { name, email, message } = req.body;
+    const { name, email, subject, message } = req.body;
     const file = req.file;
 
     // Validate required fields
-    if (!name || !email || !message) {
+    if (!name || !email || !subject || !message) {
       return res.status(400).json({
         error: 'Missing required fields',
-        message: 'Name, email, and message are required'
+        message: 'Name, email, subject, and message are required'
       });
     }
 
@@ -80,8 +80,8 @@ app.post('/send', upload.single('attachment'), async (req, res) => {
     const mailOptions = {
       from: email,
       to: process.env.EMAIL_USER || 'mdkaif196905@gmail.com',
-      subject: 'New Question Submission from QuizingSphere',
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+      subject: `New Contact Form Submission: ${subject}`,
+      text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`,
       attachments: file ? [{
         filename: file.originalname,
         content: file.buffer
